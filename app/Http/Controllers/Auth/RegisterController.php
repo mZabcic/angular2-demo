@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RegisterController extends Controller
 {
@@ -67,5 +69,27 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function createUser(Request $request) {
+        try {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password),
+        ]);
+        $token = JWTAuth::fromUser($user);
+        return response()
+            ->json([ 'succes' => true,
+                    'user' => $user->name, 
+                    'token' => $token]);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return response()
+            ->json([ 'succes' => false]);
+        }
+
     }
 }

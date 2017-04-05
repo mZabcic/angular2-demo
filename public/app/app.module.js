@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/forms", "@angular/http", "@angular/common", "./app.routing", "./app.component", "./index"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "@angular/common", "./app.routing", "./app.component", "./index", "@angular/forms"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/forms",
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, platform_browser_1, forms_1, http_1, common_1, app_routing_1, app_component_1, index_1, AppModule;
+    var core_1, platform_browser_1, http_1, common_1, app_routing_1, app_component_1, index_1, forms_1, AppModule;
     return {
         setters: [
             function (core_1_1) {
@@ -15,9 +15,6 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/forms",
             },
             function (platform_browser_1_1) {
                 platform_browser_1 = platform_browser_1_1;
-            },
-            function (forms_1_1) {
-                forms_1 = forms_1_1;
             },
             function (http_1_1) {
                 http_1 = http_1_1;
@@ -33,6 +30,9 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/forms",
             },
             function (index_1_1) {
                 index_1 = index_1_1;
+            },
+            function (forms_1_1) {
+                forms_1 = forms_1_1;
             }
         ],
         execute: function () {
@@ -47,14 +47,16 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/forms",
                         platform_browser_1.BrowserModule,
                         forms_1.FormsModule,
                         http_1.HttpModule,
-                        app_routing_1.routing
+                        app_routing_1.routing,
+                        forms_1.ReactiveFormsModule
                     ],
                     declarations: [
                         app_component_1.AppComponent,
                         index_1.WelcomeComponent,
                         index_1.NavigationComponent,
                         index_1.ToDoListComponent,
-                        index_1.LogInComponent
+                        index_1.LogInComponent,
+                        index_1.RegisterComponent
                     ],
                     providers: [
                         { provide: common_1.APP_BASE_HREF, useValue: '/' }

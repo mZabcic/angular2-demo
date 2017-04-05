@@ -1,0 +1,21 @@
+<form novalidate (ngSubmit)="onSubmit(user)" [formGroup]="user">
+<div class="field ">
+  <label class="label">Name</label>
+  <p class="control">
+    <input class="input" type="text"  formControlName="name" [(ngModel)]="model.name">
+  </p>
+</div>
+<div class="field ">
+  <label class="label">Email</label>
+  <p class="control">
+    <input class="input" type="text" formControlName="email" [(ngModel)]="model.email">
+  </p>
+</div>
+<div class="field ">
+  <label class="label">Password</label>
+  <p class="control">
+    <input class="input" type="text" formControlName="password" [(ngModel)]="model.password">
+  </p>
+</div>
+<button style="margin-top: 10px" type="submit" class="button is-info is-outlined" [disabled]="user.invalid">Sign up</button>
+</form>
