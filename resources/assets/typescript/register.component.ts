@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { UserService, AuthenticationService } from './services/index'; 
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'log-in',
@@ -10,7 +12,8 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angula
 export class RegisterComponent { 
     user: FormGroup;
     model: any = {};
-    constructor (){}
+    throwError : boolean = false;
+    constructor (private userService: UserService, private router: Router, private authService: AuthenticationService){}
 
     ngOnInit() {
         this.user = new FormGroup({
@@ -21,6 +24,19 @@ export class RegisterComponent {
 }
 
   onSubmit() {
-     
+     this.throwError = false;
+     this.userService.create(this.model)
+       .subscribe(
+           data => {
+               if (data.success) {
+                    this.router.navigate(['welcome']);
+               } else {
+                   this.throwError = true;
+              }
+           },
+           error => {
+               this.throwError = true;
+           }
+       )
   }
 }

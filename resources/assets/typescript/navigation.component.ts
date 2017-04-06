@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
-
+import { AuthenticationService } from './services/index'; 
+import { Router } from '@angular/router';
 @Component({
     selector: 'navigation',
     templateUrl: './app/html/navigation.html'
@@ -7,8 +8,13 @@ import { Component} from '@angular/core';
 })
 
 export class NavigationComponent { 
-    constructor (){
+    constructor (private authService: AuthenticationService, private router: Router){
         
          
+      }
+
+      logout() : void {
+          this.authService.logout();
+          this.router.navigate(['welcome']);
       }
 }

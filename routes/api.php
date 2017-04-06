@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 
 
 Route::post('/createUser', 'Auth\RegisterController@createUser');
+
+Route::post('/login', 'Auth\LoginController@apiLogin');
+
+
+Route::get('/user', 'HomeController@getProfileData');

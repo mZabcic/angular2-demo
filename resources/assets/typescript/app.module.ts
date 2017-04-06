@@ -6,8 +6,10 @@ import {APP_BASE_HREF} from '@angular/common';
 import { BaseRequestOptions } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
-import { WelcomeComponent, NavigationComponent, ToDoListComponent, LogInComponent, RegisterComponent } from './index';
+import { WelcomeComponent, NavigationComponent, ProfileComponent, LogInComponent, RegisterComponent } from './index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalStorageModule } from './local-storage/index';
+import { UserService, AuthenticationService } from './services/index';
 
 
 
@@ -23,7 +25,11 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
         FormsModule,
         HttpModule,
         routing,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+         LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        })
 
         
         
@@ -32,12 +38,12 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
         AppComponent,
         WelcomeComponent,
         NavigationComponent,
-        ToDoListComponent,
+        ProfileComponent,
         LogInComponent,
         RegisterComponent
     ],
     providers: [
-        {provide: APP_BASE_HREF, useValue : '/' }
+        AuthenticationService, UserService, {provide: APP_BASE_HREF, useValue : '/' }
         
     ],
     

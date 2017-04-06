@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-
+import { LocalStorageService } from './local-storage/index';
 
 
 
@@ -9,16 +9,17 @@ import { Component} from '@angular/core';
     template: `
     <main >
        <navigation></navigation>
-       <section class="section">
+       <section style="flex:1;" class="section">
         <div class="container">
         <router-outlet></router-outlet>
         </div>
        </section>
+       <div> Current user: {{localStorageService.get('currentUser')}}</div>
     </main>`
 
 })
 
 export class AppComponent { 
-constructor (){
+constructor (private localStorageService: LocalStorageService){
     }
 }

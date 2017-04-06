@@ -4,13 +4,14 @@
       <a class="nav-item is-tab" routerLink="/welcome" [routerLinkActive]="['is-active']">
         Welcome
       </a>
-      <a class="nav-item is-tab" routerLink="/to-do" [routerLinkActive]="['is-active']">
+      <a class="nav-item is-tab" routerLink="/profile" [routerLinkActive]="['is-active']">
         To do
       </a>
     </div>
     <div class="nav-right">
-      <a style="margin-top: 10px;" class="button is-success is-outlined" routerLink="/login">LOG IN</a>
-      <a style="margin-top: 10px; margin-left:10px;" class="button is-primary is-outlined" routerLink="/register">SIGN UP</a>
+      <a style="margin-top: 10px;" class="button is-success is-outlined" routerLink="/login">PRIJAVA</a>
+      <a style="margin-top: 10px; margin-left:10px;" class="button is-primary is-outlined" routerLink="/register">REGISTRACIJA</a>
+      <a style="margin-top: 10px; margin-left:10px;" class="button is-primary is-outlined" (click)="logout()">ODJAVA</a>
     </div>
   </div>
 </nav>

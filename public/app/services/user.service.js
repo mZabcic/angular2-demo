@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/http"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -18,6 +18,8 @@ System.register(["@angular/core", "@angular/http"], function (exports_1, context
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (_1) {
             }
         ],
         execute: function () {
@@ -32,7 +34,7 @@ System.register(["@angular/core", "@angular/http"], function (exports_1, context
                     return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
                 };
                 UserService.prototype.create = function (user) {
-                    return this.http.post('/api/users', user, this.jwt()).map(function (response) { return response.json(); });
+                    return this.http.post('/api/createUser', user, this.jwt()).map(function (response) { return response.json(); });
                 };
                 UserService.prototype.update = function (user) {
                     return this.http.put('/api/users/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });

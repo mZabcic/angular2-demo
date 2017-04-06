@@ -1,13 +1,24 @@
-
+<form  novalidate >
 <div class="field ">
   <label class="label">Email</label>
   <p class="control">
-    <input class="input" type="text" placeholder="Text input">
+    <input id="email" class="input" type="text" [(ngModel)]="model.email" name="email" required #email="ngModel">
   </p>
+   <div *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required" class="help is-danger">Email je potreban</p>
+    </div>
 </div>
 <div class="field ">
-  <label class="label">Password</label>
+  <label class="label">Lozinka</label>
   <p class="control">
-    <input class="input" type="text" placeholder="Text input">
+    <input id="password" class="input" type="text" [(ngModel)]="model.password" name="password" #password="ngModel" required minlength="3">
   </p>
+   <div *ngIf="password.errors && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required" class="help is-danger">Lozinka je potrebna</p>
+        <p *ngIf="password.errors.minlength" class="help is-danger">Lozinka mora sadržati barem 3 znaka </p>
+    </div>
+  <button style="margin-top: 10px" (click)="login()" class="button is-info is-outlined">Prijava</button>
+ <p *ngIf="error" class="help is-danger">Podaci su neispravni unesi nove</p>
+
 </div>
+</form>

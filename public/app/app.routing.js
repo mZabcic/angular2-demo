@@ -14,7 +14,7 @@ System.register(["@angular/router", "./index"], function (exports_1, context_1) 
         execute: function () {
             appRoutes = [
                 { path: 'welcome', component: index_1.WelcomeComponent },
-                { path: 'to-do', component: index_1.ToDoListComponent },
+                { path: 'profile', component: index_1.ProfileComponent },
                 { path: 'login', component: index_1.LogInComponent },
                 { path: 'register', component: index_1.RegisterComponent }
                 // otherwise redirect to home

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "@angular/common", "./app.routing", "./app.component", "./index", "@angular/forms"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/platform-browser", "@angular/http", "@angular/common", "./app.routing", "./app.component", "./index", "@angular/forms", "./local-storage/index", "./services/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, platform_browser_1, http_1, common_1, app_routing_1, app_component_1, index_1, forms_1, AppModule;
+    var core_1, platform_browser_1, http_1, common_1, app_routing_1, app_component_1, index_1, forms_1, index_2, index_3, AppModule;
     return {
         setters: [
             function (core_1_1) {
@@ -33,6 +33,12 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
+            },
+            function (index_2_1) {
+                index_2 = index_2_1;
+            },
+            function (index_3_1) {
+                index_3 = index_3_1;
             }
         ],
         execute: function () {
@@ -48,18 +54,22 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
                         forms_1.FormsModule,
                         http_1.HttpModule,
                         app_routing_1.routing,
-                        forms_1.ReactiveFormsModule
+                        forms_1.ReactiveFormsModule,
+                        index_2.LocalStorageModule.withConfig({
+                            prefix: 'my-app',
+                            storageType: 'localStorage'
+                        })
                     ],
                     declarations: [
                         app_component_1.AppComponent,
                         index_1.WelcomeComponent,
                         index_1.NavigationComponent,
-                        index_1.ToDoListComponent,
+                        index_1.ProfileComponent,
                         index_1.LogInComponent,
                         index_1.RegisterComponent
                     ],
                     providers: [
-                        { provide: common_1.APP_BASE_HREF, useValue: '/' }
+                        index_3.AuthenticationService, index_3.UserService, { provide: common_1.APP_BASE_HREF, useValue: '/' }
                     ],
                     bootstrap: [app_component_1.AppComponent]
                 })

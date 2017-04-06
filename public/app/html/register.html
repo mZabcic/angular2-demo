@@ -17,5 +17,6 @@
     <input class="input" type="text" formControlName="password" [(ngModel)]="model.password">
   </p>
 </div>
-<button style="margin-top: 10px" type="submit" class="button is-info is-outlined" [disabled]="user.invalid">Sign up</button>
+<button style="margin-top: 10px" type="submit" class="button is-info is-outlined" [disabled]="user.invalid">Registriraj me</button>
+ <p *ngIf="throwError" class="help is-danger">Registracija nije uspjela</p>
 </form>

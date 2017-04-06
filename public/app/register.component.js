@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/forms"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "./services/index", "@angular/router"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/forms"], function (exports_1, contex
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, forms_1, RegisterComponent;
+    var core_1, forms_1, index_1, router_1, RegisterComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -18,12 +18,22 @@ System.register(["@angular/core", "@angular/forms"], function (exports_1, contex
             },
             function (forms_1_1) {
                 forms_1 = forms_1_1;
+            },
+            function (index_1_1) {
+                index_1 = index_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }
         ],
         execute: function () {
             RegisterComponent = (function () {
-                function RegisterComponent() {
+                function RegisterComponent(userService, router, authService) {
+                    this.userService = userService;
+                    this.router = router;
+                    this.authService = authService;
                     this.model = {};
+                    this.throwError = false;
                 }
                 RegisterComponent.prototype.ngOnInit = function () {
                     this.user = new forms_1.FormGroup({
@@ -33,6 +43,19 @@ System.register(["@angular/core", "@angular/forms"], function (exports_1, contex
                     });
                 };
                 RegisterComponent.prototype.onSubmit = function () {
+                    var _this = this;
+                    this.throwError = false;
+                    this.userService.create(this.model)
+                        .subscribe(function (data) {
+                        if (data.success) {
+                            _this.router.navigate(['welcome']);
+                        }
+                        else {
+                            _this.throwError = true;
+                        }
+                    }, function (error) {
+                        _this.throwError = true;
+                    });
                 };
                 return RegisterComponent;
             }());
@@ -41,7 +64,7 @@ System.register(["@angular/core", "@angular/forms"], function (exports_1, contex
                     selector: 'log-in',
                     templateUrl: './app/html/register.html'
                 }),
-                __metadata("design:paramtypes", [])
+                __metadata("design:paramtypes", [index_1.UserService, router_1.Router, index_1.AuthenticationService])
             ], RegisterComponent);
             exports_1("RegisterComponent", RegisterComponent);
         }

@@ -1,4 +1,4 @@
-System.register(["./navigation.component", "./welcome.component", "./to-do-list.component", "./login.component", "./register.component"], function (exports_1, context_1) {
+System.register(["./navigation.component", "./welcome.component", "./profile.component", "./login.component", "./register.component"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -16,8 +16,8 @@ System.register(["./navigation.component", "./welcome.component", "./to-do-list.
             function (welcome_component_1_1) {
                 exportStar_1(welcome_component_1_1);
             },
-            function (to_do_list_component_1_1) {
-                exportStar_1(to_do_list_component_1_1);
+            function (profile_component_1_1) {
+                exportStar_1(profile_component_1_1);
             },
             function (login_component_1_1) {
                 exportStar_1(login_component_1_1);

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
-import { User } from '../models/index';
+
+import { IUser } from '../models/index';
 
 @Injectable()
 export class UserService {
@@ -15,11 +17,11 @@ export class UserService {
         return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
-    create(user: User) {
-        return this.http.post('/api/users', user, this.jwt()).map((response: Response) => response.json());
+    create(user: IUser) {
+        return this.http.post('/api/createUser', user, this.jwt()).map((response: Response) => response.json());
     }
 
-    update(user: User) {
+    update(user: IUser) {
         return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
     }
 

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./local-storage/index"], function (exports_1, context_1) {
+System.register(["@angular/core"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,31 +10,27 @@ System.register(["@angular/core", "./local-storage/index"], function (exports_1,
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, index_1, AppComponent;
+    var core_1, ProfileComponent;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (index_1_1) {
-                index_1 = index_1_1;
             }
         ],
         execute: function () {
-            AppComponent = (function () {
-                function AppComponent(localStorageService) {
-                    this.localStorageService = localStorageService;
+            ProfileComponent = (function () {
+                function ProfileComponent() {
                 }
-                return AppComponent;
+                return ProfileComponent;
             }());
-            AppComponent = __decorate([
+            ProfileComponent = __decorate([
                 core_1.Component({
                     selector: 'app',
-                    template: "\n    <main >\n       <navigation></navigation>\n       <section style=\"flex:1;\" class=\"section\">\n        <div class=\"container\">\n        <router-outlet></router-outlet>\n        </div>\n       </section>\n       <div> Current user: {{localStorageService.get('currentUser')}}</div>\n    </main>"
+                    template: "<p> TO-DO_LIST </p>"
                 }),
-                __metadata("design:paramtypes", [index_1.LocalStorageService])
-            ], AppComponent);
-            exports_1("AppComponent", AppComponent);
+                __metadata("design:paramtypes", [])
+            ], ProfileComponent);
+            exports_1("ProfileComponent", ProfileComponent);
         }
     };
 });

@@ -76,6 +76,10 @@ class RegisterController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
+       /*return response()
+            ->json([ 'name' =>$name,
+                    'email' =>  $email, 
+                    'password' =>  $password]); */
         $user = User::create([
             'name' => $name,
             'email' => $email,
@@ -83,8 +87,8 @@ class RegisterController extends Controller
         ]);
         $token = JWTAuth::fromUser($user);
         return response()
-            ->json([ 'succes' => true,
-                    'user' => $user->name, 
+            ->json([ 'success' => true,
+                    'user' => $user->email, 
                     'token' => $token]);
         } catch (\Illuminate\Database\QueryException $ex) {
             return response()

@@ -1,12 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent, ToDoListComponent, LogInComponent, RegisterComponent} from './index';
+import { WelcomeComponent, ProfileComponent, LogInComponent, RegisterComponent} from './index';
 
 
 const appRoutes: Routes = [
 
      
  { path: 'welcome', component: WelcomeComponent},
- { path: 'to-do', component: ToDoListComponent},
+ { path: 'profile', component: ProfileComponent},
  { path: 'login', component: LogInComponent},
  { path: 'register', component: RegisterComponent}
 
