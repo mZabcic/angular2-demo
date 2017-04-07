@@ -30,7 +30,7 @@ System.register(["@angular/core", "./local-storage/index"], function (exports_1,
             AppComponent = __decorate([
                 core_1.Component({
                     selector: 'app',
-                    template: "\n    <main >\n       <navigation></navigation>\n       <section style=\"flex:1;\" class=\"section\">\n        <div class=\"container\">\n        <router-outlet></router-outlet>\n        </div>\n       </section>\n       <div> Current user: {{localStorageService.get('currentUser')}}</div>\n    </main>"
+                    template: "\n    <main >\n       <navigation></navigation>\n       <section style=\"flex:1;\" class=\"section\">\n        <div class=\"container\">\n        <router-outlet></router-outlet>\n        </div>\n       </section>\n    </main>"
                 }),
                 __metadata("design:paramtypes", [index_1.LocalStorageService])
             ], AppComponent);

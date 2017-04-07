@@ -14,7 +14,6 @@ import { LocalStorageService } from './local-storage/index';
         <router-outlet></router-outlet>
         </div>
        </section>
-       <div> Current user: {{localStorageService.get('currentUser')}}</div>
     </main>`
 
 })

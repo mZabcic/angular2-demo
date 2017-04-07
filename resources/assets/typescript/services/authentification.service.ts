@@ -28,7 +28,7 @@ export class AuthenticationService {
                     this.token = token;
                  
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    this.localStorageService.set('currentUser', JSON.stringify({ username: username, token: token }));
+                    this.localStorageService.set('currentUser', token);
                     // return true to indicate successful login
                     return true;
                 } else {
@@ -39,12 +39,9 @@ export class AuthenticationService {
     }
 
 
-     forceLogin(username: string, token: string){
-       this.token = token;
-       this.localStorageService.set('currentUser', JSON.stringify({ username: username, token: token }));
                     
       
-    }
+    
 
     logout(): void {
         // clear token remove user from local storage to log user out

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "./services/index", "@angular/router"], function (exports_1, context_1) {
+System.register(["@angular/core", "./services/index", "@angular/router", "./local-storage/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "./services/index", "@angular/router"], functi
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, index_1, router_1, NavigationComponent;
+    var core_1, index_1, router_1, index_2, NavigationComponent;
     return {
         setters: [
             function (core_1_1) {
@@ -21,13 +21,17 @@ System.register(["@angular/core", "./services/index", "@angular/router"], functi
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (index_2_1) {
+                index_2 = index_2_1;
             }
         ],
         execute: function () {
             NavigationComponent = (function () {
-                function NavigationComponent(authService, router) {
+                function NavigationComponent(authService, router, localStorageService) {
                     this.authService = authService;
                     this.router = router;
+                    this.localStorageService = localStorageService;
                 }
                 NavigationComponent.prototype.logout = function () {
                     this.authService.logout();
@@ -40,7 +44,7 @@ System.register(["@angular/core", "./services/index", "@angular/router"], functi
                     selector: 'navigation',
                     templateUrl: './app/html/navigation.html'
                 }),
-                __metadata("design:paramtypes", [index_1.AuthenticationService, router_1.Router])
+                __metadata("design:paramtypes", [index_1.AuthenticationService, router_1.Router, index_2.LocalStorageService])
             ], NavigationComponent);
             exports_1("NavigationComponent", NavigationComponent);
         }

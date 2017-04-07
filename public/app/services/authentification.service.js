@@ -48,7 +48,7 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map", "../
                             // set token property
                             _this.token = token;
                             // store username and jwt token in local storage to keep user logged in between page refreshes
-                            _this.localStorageService.set('currentUser', JSON.stringify({ username: username, token: token }));
+                            _this.localStorageService.set('currentUser', token);
                             // return true to indicate successful login
                             return true;
                         }
@@ -57,10 +57,6 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map", "../
                             return false;
                         }
                     });
-                };
-                AuthenticationService.prototype.forceLogin = function (username, token) {
-                    this.token = token;
-                    this.localStorageService.set('currentUser', JSON.stringify({ username: username, token: token }));
                 };
                 AuthenticationService.prototype.logout = function () {
                     // clear token remove user from local storage to log user out

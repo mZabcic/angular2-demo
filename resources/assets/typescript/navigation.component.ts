@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import { AuthenticationService } from './services/index'; 
 import { Router } from '@angular/router';
+import { LocalStorageService } from './local-storage/index';
+
 @Component({
     selector: 'navigation',
     templateUrl: './app/html/navigation.html'
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class NavigationComponent { 
-    constructor (private authService: AuthenticationService, private router: Router){
+    constructor (private authService: AuthenticationService, private router: Router,  private localStorageService: LocalStorageService){
         
          
       }

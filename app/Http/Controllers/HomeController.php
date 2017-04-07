@@ -29,6 +29,7 @@ class HomeController extends Controller
     }
 
     public function getProfileData() {
+
           try {
 
         if (! $user = JWTAuth::parseToken()->authenticate()) {
@@ -37,7 +38,7 @@ class HomeController extends Controller
 
     } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
-        return response()->json(['token_expired'], $e->getStatusCode());
+        JWTAuth::refresh($token);
 
     } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 
