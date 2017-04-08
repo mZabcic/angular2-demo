@@ -6,7 +6,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { BaseRequestOptions } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
-import { WelcomeComponent, NavigationComponent, ProfileComponent, LogInComponent, RegisterComponent } from './index';
+import { WelcomeComponent, NavigationComponent, ProfileComponent, LogInComponent, RegisterComponent, AuthGuard } from './index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageModule } from './local-storage/index';
 import { UserService, AuthenticationService } from './services/index';
@@ -43,7 +43,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
         RegisterComponent
     ],
     providers: [
-        AuthenticationService, UserService, {provide: APP_BASE_HREF, useValue : '/' }
+        AuthenticationService, UserService, AuthGuard, {provide: APP_BASE_HREF, useValue : '/' }
         
     ],
     

@@ -23,14 +23,20 @@ System.register(["@angular/core", "rxjs/Rx"], function (exports_1, context_1) {
         execute: function () {
             WelcomeComponent = (function () {
                 function WelcomeComponent() {
+                    this.show = false;
                     this.currentTime = Rx_1.Observable.interval(1000).map(function (x) { return new Date(); }).share();
                 }
+                WelcomeComponent.prototype.ngDoCheck = function () {
+                    if (this.currentTime !== undefined) {
+                        this.show = true;
+                    }
+                };
                 return WelcomeComponent;
             }());
             WelcomeComponent = __decorate([
                 core_1.Component({
                     selector: 'app',
-                    template: "<h1 class=\"title is-1\"> {{ currentTime | async | date:'hh : mm : ss' }} </h1>"
+                    template: "<h1 *ngIf=\"show\" class=\"title is-1\"> {{ currentTime | async | date:'hh : mm : ss' }} </h1>\n    \n    "
                 }),
                 __metadata("design:paramtypes", [])
             ], WelcomeComponent);

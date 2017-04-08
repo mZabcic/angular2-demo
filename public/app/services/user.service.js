@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map", "../local-storage/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,7 +10,7 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map"], fun
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, http_1, UserService;
+    var core_1, http_1, index_1, UserService;
     return {
         setters: [
             function (core_1_1) {
@@ -20,34 +20,29 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map"], fun
                 http_1 = http_1_1;
             },
             function (_1) {
+            },
+            function (index_1_1) {
+                index_1 = index_1_1;
             }
         ],
         execute: function () {
             UserService = (function () {
-                function UserService(http) {
+                function UserService(http, localStorageService) {
                     this.http = http;
+                    this.localStorageService = localStorageService;
                 }
-                UserService.prototype.getAll = function () {
-                    return this.http.get('/api/users', this.jwt()).map(function (response) { return response.json(); });
-                };
-                UserService.prototype.getById = function (id) {
-                    return this.http.get('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
+                UserService.prototype.getUser = function () {
+                    return this.http.get('/api/user', this.jwt()).map(function (response) { return response.json(); });
                 };
                 UserService.prototype.create = function (user) {
                     return this.http.post('/api/createUser', user, this.jwt()).map(function (response) { return response.json(); });
                 };
-                UserService.prototype.update = function (user) {
-                    return this.http.put('/api/users/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });
-                };
-                UserService.prototype.delete = function (id) {
-                    return this.http.delete('/api/users/' + id, this.jwt()).map(function (response) { return response.json(); });
-                };
                 // private helper methods
                 UserService.prototype.jwt = function () {
                     // create authorization header with jwt token
-                    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                    if (currentUser && currentUser.token) {
-                        var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+                    var currentUser = this.localStorageService.get('currentUser');
+                    if (currentUser !== null) {
+                        var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser });
                         return new http_1.RequestOptions({ headers: headers });
                     }
                 };
@@ -55,7 +50,7 @@ System.register(["@angular/core", "@angular/http", "rxjs/add/operator/map"], fun
             }());
             UserService = __decorate([
                 core_1.Injectable(),
-                __metadata("design:paramtypes", [http_1.Http])
+                __metadata("design:paramtypes", [http_1.Http, index_1.LocalStorageService])
             ], UserService);
             exports_1("UserService", UserService);
         }

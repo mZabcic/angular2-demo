@@ -69,7 +69,7 @@ System.register(["@angular/core", "@angular/platform-browser", "@angular/http", 
                         index_1.RegisterComponent
                     ],
                     providers: [
-                        index_3.AuthenticationService, index_3.UserService, { provide: common_1.APP_BASE_HREF, useValue: '/' }
+                        index_3.AuthenticationService, index_3.UserService, index_1.AuthGuard, { provide: common_1.APP_BASE_HREF, useValue: '/' }
                     ],
                     bootstrap: [app_component_1.AppComponent]
                 })
